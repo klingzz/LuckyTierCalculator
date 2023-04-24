@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lucky Tier Calculator</title>
+    <style>
+      input {
+        margin-right: 10px;
+      }
+    </style>
+    <script>
+      function calculate() {
+        // Get the input values
+        var days = parseInt(document.getElementById("days").value);
+        var hours = parseInt(document.getElementById("hours").value);
+        var trophies = parseInt(document.getElementById("trophies").value);
+
+        // Perform the calculations
+        var x = days * 24 + hours + 4;
+        var y = 120 - x;
+        var result = y > 0 ? trophies / y : 0;
+        var result = result * 120;
+        var result = result * 1.025;
+
+        // Display the result
+        document.getElementById("result").innerHTML =
+          "This lucky tier will likely end at around: " +
+          result.toFixed(2) +
+          " trophies";
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Lucky Tier Calculator</h1>
+    <label for="days">Days remaining:</label>
+    <input type="number" id="days" />
+    <label for="hours">Hours remaining:</label>
+    <input type="number" id="hours" />
+    <label for="trophies">Current Trophies of Lucky Tier:</label>
+    <input type="number" id="trophies" />
+    <button onclick="calculate()">Calculate Lucky Tier</button>
+    <p id="result"></p>
+  </body>
+</html>
